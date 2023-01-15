@@ -5,6 +5,7 @@ import products from './datasources/products_initial.json' assert { type: 'json'
 const typeDefs = `#graphql
   type Query {
     hello: String
+    product(id: ID!): Product
     products: [Product!]!
   }
    
@@ -21,6 +22,7 @@ const typeDefs = `#graphql
 const resolvers = {
   Query: {
     hello: () => 'world',
+    product: (_parent, args) => products.find((item) => item.id === args.id),
     products: () => products,
   },
 };
