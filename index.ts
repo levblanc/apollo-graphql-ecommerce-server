@@ -20,6 +20,7 @@ const typeDefs = `#graphql
     quantity: Int!
     price: Float!
     onSale: Boolean!
+    category: Category
   }
 
   type Category {
@@ -42,6 +43,10 @@ const resolvers = {
   Category: {
     products: (parent) =>
       products.filter((product) => product.categoryId === parent.id),
+  },
+  Product: {
+    category: (parent) =>
+      categories.find((category) => parent.categoryId === category.id),
   },
 };
 
