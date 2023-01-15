@@ -1,6 +1,6 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-import products from './datasources/products_initial.json' assert { type: 'json' };
+import products from './datasources/products_data.json' assert { type: 'json' };
 import categories from './datasources/categories_data.json' assert { type: 'json' };
 
 const typeDefs = `#graphql
