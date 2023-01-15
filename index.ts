@@ -25,16 +25,23 @@ const typeDefs = `#graphql
   type Category {
     id: ID!
     name: String!
+    products: [Product!]!
   }
 `;
 
 const resolvers = {
   Query: {
     hello: () => 'world',
-    product: (_parent, args) => products.find((item) => item.id === args.id),
+    product: (_parent, args) =>
+      products.find((product) => product.id === args.id),
     products: () => products,
-    category: (_parent, args) => categories.find((item) => item.id === args.id),
+    category: (_parent, args) =>
+      categories.find((parent) => parent.id === args.id),
     categories: () => categories,
+  },
+  Category: {
+    products: (parent) =>
+      products.filter((product) => product.categoryId === parent.id),
   },
 };
 
