@@ -8,6 +8,8 @@ const typeDefs = `#graphql
 
   type Mutation {
     addCategory(input: AddCategoryInput!): Category! 
+    addProduct(input: AddProductInput!): Product!
+    addReview(input: AddReviewInput!): Review!
   }
    
   type Product {
@@ -34,6 +36,7 @@ const typeDefs = `#graphql
     title: String!
     comment: String!
     rating: Int!
+    productId: String!
   }
 
   input ProductsFilter {
@@ -43,6 +46,19 @@ const typeDefs = `#graphql
 
   input AddCategoryInput {
     name: String!
+  }
+
+  input AddProductInput {
+    name: String!
+    price: Float!
+    categoryId: ID!
+  }
+
+  input AddReviewInput {
+    title: String!
+    comment: String!
+    rating: Int!
+    productId: ID!
   }
 `;
 
