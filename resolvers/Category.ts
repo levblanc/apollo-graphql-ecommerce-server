@@ -1,12 +1,37 @@
 const Category = {
-  products: ({ id }, { filter }, { products }) =>
+  products: ({ id }, { filter }, { products, reviews }) =>
     products.filter((product) => {
       if (product.categoryId === id) {
-        if (filter && filter.onSale) {
-          return product.onSale;
-        } else {
-          return product;
+        if (filter) {
+          const { onSale, avgRating } = filter;
+
+          if (onSale && !avgRating) {
+            return product.onSale;
+          }
+
+          if (!onSale && avgRating) {
+            if (![1, 2, 3, 4, 5].includes(avgRating)) {
+              console.log('>>>>> Error: avgRating not valid', avgRating);
+              return [];
+            }
+
+            let ratingSum = 0;
+            let ratingCount = 0;
+
+            reviews.forEach((review) => {
+              if (product.id === review.productId) {
+                ratingSum += review.rating;
+                ratingCount++;
+              }
+            });
+
+            const avg = ratingSum / ratingCount;
+
+            return avg >= avgRating;
+          }
         }
+
+        return product;
       }
     }),
 };

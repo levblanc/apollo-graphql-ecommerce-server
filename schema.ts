@@ -20,6 +20,7 @@ const typeDefs = `#graphql
 
   input ProductsFilter {
     onSale: Boolean
+    avgRating: Int
   }
 
   type Category {
