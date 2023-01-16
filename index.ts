@@ -4,6 +4,7 @@ import typeDefs from './schema';
 import resolvers from './resolvers';
 import products from './datasources/products_data.json' assert { type: 'json' };
 import categories from './datasources/categories_data.json' assert { type: 'json' };
+import reviews from './datasources/reviews_data.json' assert { type: 'json' };
 
 const server = new ApolloServer({
   typeDefs,
@@ -15,6 +16,7 @@ const { url } = await startStandaloneServer(server, {
     return {
       products,
       categories,
+      reviews,
     };
   },
   listen: { port: 4000 },
