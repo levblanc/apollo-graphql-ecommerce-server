@@ -14,6 +14,3 @@ const Query = {
 };
 
 export default Query;
-// "filter": {
-//   "onSale": true
-// },

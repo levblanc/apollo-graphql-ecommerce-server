@@ -25,7 +25,7 @@ const typeDefs = `#graphql
   type Category {
     id: ID!
     name: String!
-    products: [Product!]!
+    products(filter: ProductsFilter): [Product!]!
   }
 
   type Review {
