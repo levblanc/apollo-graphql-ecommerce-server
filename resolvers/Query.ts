@@ -5,7 +5,6 @@ const Query = {
   category: (_parent, { id }, { categories }) =>
     categories.find((parent) => parent.id === id),
   categories: (_parent, __args, { categories }) => categories,
-  reviews: (_parent, __args, { reviews }) => reviews,
 };
 
 export default Query;

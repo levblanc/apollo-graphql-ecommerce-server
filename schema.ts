@@ -4,7 +4,6 @@ const typeDefs = `#graphql
     products: [Product!]!
     category(id: ID!): Category
     categories: [Category!]!
-    reviews: [Review!]!
   }
    
   type Product {
