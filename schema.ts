@@ -5,6 +5,10 @@ const typeDefs = `#graphql
     category(id: ID!): Category
     categories: [Category!]!
   }
+
+  type Mutation {
+    addCategory(input: AddCategoryInput!): Category! 
+  }
    
   type Product {
     id: ID!
@@ -16,11 +20,6 @@ const typeDefs = `#graphql
     onSale: Boolean!
     category: Category
     reviews: [Review!]!
-  }
-
-  input ProductsFilter {
-    onSale: Boolean
-    avgRating: Int
   }
 
   type Category {
@@ -35,6 +34,15 @@ const typeDefs = `#graphql
     title: String!
     comment: String!
     rating: Int!
+  }
+
+  input ProductsFilter {
+    onSale: Boolean
+    avgRating: Int
+  }
+
+  input AddCategoryInput {
+    name: String!
   }
 `;
 
