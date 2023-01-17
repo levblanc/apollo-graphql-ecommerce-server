@@ -2,7 +2,7 @@ import { v4 as uuidV4 } from 'uuid';
 import dayjs from 'dayjs';
 
 const Mutation = {
-  addCategory: (_parent, { input }, { categories }) => {
+  addCategory: (_parent, { input }, { db }) => {
     const { name } = input;
 
     const newCategory = {
@@ -10,12 +10,12 @@ const Mutation = {
       name,
     };
 
-    categories.push(newCategory);
+    db.categories.push(newCategory);
 
     return newCategory;
   },
 
-  addProduct: (_parent, { input }, { products }) => {
+  addProduct: (_parent, { input }, { db }) => {
     const { name, price, categoryId } = input;
 
     const newProduct = {
@@ -25,12 +25,12 @@ const Mutation = {
       categoryId,
     };
 
-    products.push(newProduct);
+    db.products.push(newProduct);
 
     return newProduct;
   },
 
-  addReview: (_parent, { input }, { reviews }) => {
+  addReview: (_parent, { input }, { db }) => {
     const { title, comment, rating, productId } = input;
 
     const newReview = {
@@ -42,7 +42,7 @@ const Mutation = {
       productId,
     };
 
-    reviews.push(newReview);
+    db.reviews.push(newReview);
 
     return newReview;
   },

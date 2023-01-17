@@ -1,8 +1,8 @@
 const Product = {
-  category: ({ categoryId }, _args, { categories }) =>
-    categories.find((category) => categoryId === category.id),
-  reviews: ({ id }, _args, { reviews }) =>
-    reviews.filter((review) => review.productId === id),
+  category: ({ categoryId }, _args, { db }) =>
+    db.categories.find((category) => categoryId === category.id),
+  reviews: ({ id }, _args, { db }) =>
+    db.reviews.filter((review) => review.productId === id),
 };
 
 export default Product;
