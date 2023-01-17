@@ -70,6 +70,11 @@ const Mutation = {
 
     return true;
   },
+
+  deleteReview: (_parent, { id }, { db }) => {
+    db.reviews = db.reviews.filter((review) => review.id !== id);
+    return true;
+  },
 };
 
 export default Mutation;
